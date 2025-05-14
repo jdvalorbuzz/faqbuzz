@@ -1,0 +1,360 @@
+/**
+ * Estilos del frontend para el plugin Custom FAQ
+ */
+
+ .custom-faq-container, .custom-faq-container * {
+    font-family: 'Gotham', Arial, sans-serif !important;
+}
+
+.custom-faq-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 10%; /* Espacio inferior para mejor visualización del dropdown */
+}
+
+.custom-faq-main-title {
+    font-size: 36px;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 1024px) {
+    .custom-faq-main-title {
+        margin-top: 50px;
+    }
+}
+
+.custom-faq-main-title .font-bold {
+    font-weight: bold;
+    color: #2270A8;
+}
+
+.custom-faq-description {
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 25px;
+    display: block;
+}
+
+.custom-faq-search-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.custom-faq-search-input {
+    flex: 1;
+    padding: 12px 40px 12px 16px;
+    border: 1px solid var(--custom-faq-border-color);
+    border-radius: var(--custom-faq-border-radius);
+    font-size: 16px;
+    outline: none;
+    background: #fff;
+}
+
+.custom-faq-search-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-faq-search-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: rgba(120,120,120,0.35);
+    display: block;
+}
+
+/* Estilos para el selector de categorías */
+.custom-faq-categories {
+    margin-bottom: 30px;
+}
+
+.custom-faq-category-label {
+    font-weight: bold;
+    color: var(--custom-faq-title-color);
+    margin-bottom: 15px;
+    display: block;
+    font-size: var(--custom-faq-title-font-size);
+}
+
+/* Estilos para el dropdown personalizado */
+.custom-faq-category-dropdown-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+}
+
+.custom-faq-category-dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background-color: white;
+    border: 1px solid var(--custom-faq-border-color);
+    border-radius: var(--custom-faq-border-radius);
+    cursor: pointer;
+    color: var(--custom-faq-text-color);
+    font-size: var(--custom-faq-text-font-size);
+    transition: all 0.3s ease;
+}
+
+.custom-faq-category-dropdown-selected:hover {
+    border-color: var(--custom-faq-accent-color);
+}
+
+.custom-faq-dropdown-arrow {
+    border-style: solid;
+    border-width: 5px 5px 0 5px;
+    border-color: var(--custom-faq-accent-color) transparent transparent transparent;
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+.custom-faq-category-dropdown-wrapper.active .custom-faq-dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.custom-faq-category-dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border: 1px solid var(--custom-faq-border-color);
+    border-top: none;
+    border-radius: 0 0 var(--custom-faq-border-radius) var(--custom-faq-border-radius);
+    z-index: 10;
+    display: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-faq-category-dropdown-wrapper.active .custom-faq-category-dropdown-options {
+    display: block;
+}
+
+.custom-faq-category-option {
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.custom-faq-category-option:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.custom-faq-category-option.active {
+    background-color: var(--custom-faq-accent-color);
+    color: white;
+}
+
+/* Estilos para los elementos FAQ */
+.custom-faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.custom-faq-item {
+    margin-bottom: 0;
+    background-color: var(--custom-faq-bg-color);
+    border: none;
+    border-radius: 20px;
+    overflow: visible;
+    padding: 0;
+}
+
+.custom-faq-question-row {
+    border: 1px solid #E1E1E1;
+    border-radius: 20px;
+    background: #fff;
+    padding: 0 20px;
+    margin-bottom: 0;
+    margin-top: 0;
+    transition: border-color 0.2s;
+}
+
+.custom-faq-question-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Gotham-Bold', 'Gotham', Arial, sans-serif;
+    color: #333;
+    width: 100%;
+    padding: 20px 0;
+    outline: none;
+    transition: color 0.2s;
+}
+
+.custom-faq-question-label:focus {
+    color: #2270A8;
+    border: none;
+}
+
+.custom-faq-arrow {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s;
+}
+
+.custom-faq-item.active .custom-faq-arrow {
+    transform: rotate(180deg);
+}
+
+.custom-faq-answer {
+    display: none;
+    margin-top: 22px;
+    padding: 0 20px 20px 20px;
+    font-size: 16px;
+    color: #333;
+    background: #fff;
+    border-radius: 0 0 20px 20px;
+}
+
+.custom-faq-item.active .custom-faq-answer {
+    display: block;
+}
+
+/* Mensaje de no resultados */
+.custom-faq-no-results {
+    padding: 20px;
+    text-align: center;
+    background-color: var(--custom-faq-bg-color);
+    border: 1px solid var(--custom-faq-border-color);
+    border-radius: var(--custom-faq-border-radius);
+    color: var(--custom-faq-text-color);
+}
+
+/* Layout flex para categorías y preguntas */
+.custom-faq-flex-layout {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    align-items: flex-start;
+    margin-top: 32px;
+}
+
+.custom-faq-categories {
+    min-width: 240px;
+    max-width: 320px;
+    flex-shrink: 0;
+    margin-bottom: 0;
+}
+
+.custom-faq-items-container {
+    flex: 1;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .custom-faq-categories {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .custom-faq-category-label {
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+    
+    .custom-faq-category-selector {
+        width: 100%;
+    }
+    
+    .custom-faq-question {
+        padding: 15px 40px 15px 15px;
+        font-size: calc(var(--custom-faq-title-font-size) - 2px);
+    }
+    
+    .custom-faq-answer {
+        padding: 15px;
+        font-size: calc(var(--custom-faq-text-font-size) - 1px);
+    }
+}
+
+@media (max-width: 900px) {
+    .custom-faq-flex-layout {
+        flex-direction: column;
+        gap: 0;
+        margin-top: 16px;
+    }
+    .custom-faq-categories,
+    .custom-faq-items-container {
+        max-width: 100%;
+        min-width: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .custom-faq-container {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    .custom-faq-categories {
+        min-width: 0;
+        max-width: 100%;
+    }
+    .custom-faq-question-label {
+        font-size: 15px;
+        padding: 14px 0;
+    }
+    .custom-faq-arrow {
+        width: 32px;
+        height: 32px;
+    }
+    .custom-faq-answer {
+        padding: 0 10px 14px 10px;
+    }
+}
+
+/* Estilos para el tooltip de categoría */
+.custom-faq-category-tooltip-wrapper {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+.custom-faq-category-tooltip-icon {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    color: #bbb;
+    transition: color 0.2s;
+}
+.custom-faq-category-tooltip-icon:hover {
+    color: var(--custom-faq-accent-color, #682766);
+}
+.custom-faq-category-tooltip-text {
+    display: block;
+    position: absolute;
+    z-index: 10;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 125%;
+    background: #333;
+    color: #fff;
+    padding: 7px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+.custom-faq-category-tooltip-wrapper:hover .custom-faq-category-tooltip-text,
+.custom-faq-category-tooltip-icon:focus + .custom-faq-category-tooltip-text {
+    opacity: 1;
+    pointer-events: auto;
+}
